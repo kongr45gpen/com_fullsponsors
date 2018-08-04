@@ -2,7 +2,7 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.1
+	@version		0.0.3
 	@build			4th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors

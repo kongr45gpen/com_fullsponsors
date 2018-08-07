@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		script.php
@@ -108,28 +108,14 @@ class com_managedsponsorsInstallerScript
 		// set the default component settings
 		if ($type == 'install')
 		{
-			// Install the global extenstion assets permission.
+			// [Interpretation 4668] Install the global extenstion params.
 			$db = JFactory::getDbo();
 			$query = $db->getQuery(true);
-			// Field to update.
+			// [Interpretation 4672] Field to update.
 			$fields = array(
-				$db->quoteName('rules') . ' = ' . $db->quote('{"site.allsponsors.access":{"1":1}}'),
+				$db->quoteName('params') . ' = ' . $db->quote('{"autorName":"kongr45gpen","autorEmail":"electrovesta@gmail.com","base_height":"100px"}'),
 			);
-			// Condition.
-			$conditions = array(
-				$db->quoteName('name') . ' = ' . $db->quote('com_managedsponsors')
-			);
-			$query->update($db->quoteName('#__assets'))->set($fields)->where($conditions);
-			$db->setQuery($query);
-			$allDone = $db->execute();
-
-			// Install the global extenstion params.
-			$query = $db->getQuery(true);
-			// Field to update.
-			$fields = array(
-				$db->quoteName('params') . ' = ' . $db->quote('{"autorName":"kongr45gpen","autorEmail":"electrovesta@gmail.com"}'),
-			);
-			// Condition.
+			// [Interpretation 4676] Condition.
 			$conditions = array(
 				$db->quoteName('element') . ' = ' . $db->quote('com_managedsponsors')
 			);
@@ -147,7 +133,7 @@ class com_managedsponsorsInstallerScript
 			echo '<a target="_blank" href="http://helit.org/" title="Managed Sponsors">
 				<img src="components/com_managedsponsors/assets/images/vdm-component.jpg"/>
 				</a>
-				<h3>Upgrade to Version 0.0.3 Was Successful! Let us know if anything is not working as expected.</h3>';
+				<h3>Upgrade to Version 0.0.4 Was Successful! Let us know if anything is not working as expected.</h3>';
 		}
 	}
 }

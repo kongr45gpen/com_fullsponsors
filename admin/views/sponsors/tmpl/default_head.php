@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		default_head.php
@@ -46,6 +46,9 @@ defined('_JEXEC') or die('Restricted access');
 	</th>
 	<th class="nowrap hidden-phone" >
 			<?php echo JHtml::_('grid.sort', 'COM_MANAGEDSPONSORS_SPONSOR_WEBSITE_LABEL', 'website', $this->listDirn, $this->listOrder); ?>
+	</th>
+	<th class="nowrap hidden-phone" >
+			<?php echo JText::_('COM_MANAGEDSPONSORS_SPONSOR_SIZE_LABEL'); ?>
 	</th>
 	<?php if ($this->canState): ?>
 		<th width="10" class="nowrap center" >

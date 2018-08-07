@@ -4,15 +4,15 @@
 	addfieldpath="/administrator/components/com_managedsponsors/models/fields"
 >
 	<fieldset name="details">
-		<!-- Default Fields. -->
-		<!-- Id Field. Type: Text (joomla) -->
+		<!-- [Fields 467] Default Fields. -->
+		<!-- [Fields 468] Id Field. Type: Text (joomla) -->
 		<field
 			name="id"
 			type="text" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
 			description ="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
 			readonly="true"
 		/>
-		<!-- Date Created Field. Type: Calendar (joomla) -->
+		<!-- [Fields 484] Date Created Field. Type: Calendar (joomla) -->
 		<field
 			name="created"
 			type="calendar"
@@ -22,14 +22,14 @@
 			format="%Y-%m-%d %H:%M:%S"
 			filter="user_utc"
 		/>
-		<!-- User Created Field. Type: User (joomla) -->
+		<!-- [Fields 504] User Created Field. Type: User (joomla) -->
 		<field
 			name="created_by"
 			type="user"
 			label="COM_MANAGEDSPONSORS_SPONSOR_CREATED_BY_LABEL"
 			description="COM_MANAGEDSPONSORS_SPONSOR_CREATED_BY_DESC"
 		/>
-		<!-- Published Field. Type: List (joomla) -->
+		<!-- [Fields 521] Published Field. Type: List (joomla) -->
 		<field name="published" type="list" label="JSTATUS"
 			description="JFIELD_PUBLISHED_DESC" class="chzn-color-state"
 			filter="intval" size="1" default="1" >
@@ -42,11 +42,11 @@
 			<option value="-2">
 				JTRASHED</option>
 		</field>
-		<!-- Date Modified Field. Type: Calendar (joomla) -->
+		<!-- [Fields 544] Date Modified Field. Type: Calendar (joomla) -->
 		<field name="modified" type="calendar" class="readonly"
 			label="COM_MANAGEDSPONSORS_SPONSOR_MODIFIED_DATE_LABEL" description="COM_MANAGEDSPONSORS_SPONSOR_MODIFIED_DATE_DESC"
 			size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
-		<!-- User Modified Field. Type: User (joomla) -->
+		<!-- [Fields 554] User Modified Field. Type: User (joomla) -->
 		<field name="modified_by" type="user"
 			label="COM_MANAGEDSPONSORS_SPONSOR_MODIFIED_BY_LABEL"
 			description="COM_MANAGEDSPONSORS_SPONSOR_MODIFIED_BY_DESC"
@@ -54,7 +54,7 @@
 			readonly="true"
 			filter="unset"
 		/>
-		<!-- Access Field. Type: Accesslevel (joomla) -->
+		<!-- [Fields 568] Access Field. Type: Accesslevel (joomla) -->
 		<field name="access"
 			type="accesslevel"
 			label="JFIELD_ACCESS_LABEL"
@@ -62,7 +62,7 @@
 			default="1"
 			required="false"
 		/>
-		<!-- Ordering Field. Type: Numbers (joomla) -->
+		<!-- [Fields 586] Ordering Field. Type: Numbers (joomla) -->
 		<field
 			name="ordering"
 			type="number"
@@ -73,7 +73,7 @@
 			size="6"
 			required="false"
 		/>
-		<!-- Version Field. Type: Text (joomla) -->
+		<!-- [Fields 607] Version Field. Type: Text (joomla) -->
 		<field
 			name="version"
 			type="text"
@@ -84,7 +84,7 @@
 			readonly="true"
 			filter="unset"
 		/>
-		<!-- Metakey Field. Type: Textarea (joomla) -->
+		<!-- [Fields 625] Metakey Field. Type: Textarea (joomla) -->
 		<field
 			name="metakey"
 			type="textarea"
@@ -93,7 +93,7 @@
 			rows="3"
 			cols="30"
 		/>
-		<!-- Metadesc Field. Type: Textarea (joomla) -->
+		<!-- [Fields 637] Metadesc Field. Type: Textarea (joomla) -->
 		<field
 			name="metadesc"
 			type="textarea"
@@ -102,8 +102,8 @@
 			rows="3"
 			cols="30"
 		/>
-		<!-- Dynamic Fields. -->
-		<!-- Name Field. Type: Text. (joomla) -->
+		<!-- [Fields 652] Dynamic Fields. -->
+		<!-- [Fields 1299] Name Field. Type: Text. (joomla) -->
 		<field
 			type="text"
 			name="name"
@@ -117,18 +117,18 @@
 			required="true"
 			message="COM_MANAGEDSPONSORS_SPONSOR_NAME_MESSAGE"
 		/>
-		<!-- Catid Field. Type: Category. (joomla) -->
+		<!-- [Fields 1299] Catid Field. Type: Category. (joomla) -->
 		<field
 			type="category"
 			name="catid"
 			label="COM_MANAGEDSPONSORS_SPONSOR_CATID_LABEL"
 			extension="com_managedsponsors.sponsors"
 			required="false"
-			show_root="false"
+			show_root="true"
 			published="1"
 			multiple="false"
 		/>
-		<!-- Website Field. Type: Url. (joomla) -->
+		<!-- [Fields 1299] Website Field. Type: Url. (joomla) -->
 		<field
 			type="url"
 			name="website"
@@ -143,7 +143,60 @@
 			message="COM_MANAGEDSPONSORS_SPONSOR_WEBSITE_MESSAGE"
 			hint="COM_MANAGEDSPONSORS_SPONSOR_WEBSITE_HINT"
 		/>
-		<!-- Image Field. Type: Media. (joomla) -->
+		<!-- [Fields 1299] Size Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="size"
+			label="COM_MANAGEDSPONSORS_SPONSOR_SIZE_LABEL"
+			size="10"
+			maxlength="50"
+			default="100"
+			description="COM_MANAGEDSPONSORS_SPONSOR_SIZE_DESCRIPTION"
+			class="text_area"
+			readonly="false"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			validate="number"
+			message="COM_MANAGEDSPONSORS_SPONSOR_SIZE_MESSAGE"
+			hint="COM_MANAGEDSPONSORS_SPONSOR_SIZE_HINT"
+			autocomplete="on"
+		/>
+		<!-- [Fields 1299] Padding Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="padding"
+			label="COM_MANAGEDSPONSORS_SPONSOR_PADDING_LABEL"
+			size="5"
+			maxlength="50"
+			description="COM_MANAGEDSPONSORS_SPONSOR_PADDING_DESCRIPTION"
+			class="text_area"
+			readonly="false"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			message="COM_MANAGEDSPONSORS_SPONSOR_PADDING_MESSAGE"
+			hint="COM_MANAGEDSPONSORS_SPONSOR_PADDING_HINT"
+			autocomplete="on"
+		/>
+		<!-- [Fields 1299] Margin Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="margin"
+			label="COM_MANAGEDSPONSORS_SPONSOR_MARGIN_LABEL"
+			size="5"
+			maxlength="50"
+			description="COM_MANAGEDSPONSORS_SPONSOR_MARGIN_DESCRIPTION"
+			class="text_area"
+			readonly="false"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			message="COM_MANAGEDSPONSORS_SPONSOR_MARGIN_MESSAGE"
+			hint="COM_MANAGEDSPONSORS_SPONSOR_MARGIN_HINT"
+			autocomplete="on"
+		/>
+		<!-- [Fields 1299] Image Field. Type: Media. (joomla) -->
 		<field
 			type="media"
 			name="image"
@@ -153,11 +206,11 @@
 		/>
 	</fieldset>
 
-	<!-- Metadata Fields. -->
+	<!-- [Fields 659] Metadata Fields. -->
 	<fields name="metadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
 		<fieldset name="vdmmetadata"
 			label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
-			<!-- Robots Field. Type: List (joomla) -->
+			<!-- [Fields 664] Robots Field. Type: List (joomla) -->
 			<field name="robots"
 				type="list"
 				label="JFIELD_METADATA_ROBOTS_LABEL"
@@ -168,13 +221,13 @@
 				<option value="index, nofollow">JGLOBAL_INDEX_NOFOLLOW</option>
 				<option value="noindex, nofollow">JGLOBAL_NOINDEX_NOFOLLOW</option>
 			</field>
-			<!-- Author Field. Type: Text (joomla) -->
+			<!-- [Fields 678] Author Field. Type: Text (joomla) -->
 			<field name="author"
 				type="text"
 				label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC"
 				size="20"
 			/>
-			<!-- Rights Field. Type: Textarea (joomla) -->
+			<!-- [Fields 687] Rights Field. Type: Textarea (joomla) -->
 			<field name="rights" type="textarea" label="JFIELD_META_RIGHTS_LABEL"
 				description="JFIELD_META_RIGHTS_DESC" required="false" filter="string"
 				cols="30" rows="2"
@@ -182,15 +235,15 @@
 		</fieldset>
 	</fields>
 	
-	<!-- Access Control Fields. -->
+	<!-- [Interpretation 11341] Access Control Fields. -->
 	<fieldset name="accesscontrol">
-		<!-- Asset Id Field. Type: Hidden (joomla) -->
+		<!-- [Interpretation 11343] Asset Id Field. Type: Hidden (joomla) -->
 		<field
 			name="asset_id"
 			type="hidden"
 			filter="unset"
 		/>
-		<!-- Rules Field. Type: Rules (joomla) -->
+		<!-- [Interpretation 11349] Rules Field. Type: Rules (joomla) -->
 		<field
 			name="rules"
 			type="rules"

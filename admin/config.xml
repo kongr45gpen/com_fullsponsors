@@ -30,6 +30,28 @@
 		/>
 	</fieldset>
 	<fieldset
+		name="all_sponsors_custom_config"
+		label="COM_MANAGEDSPONSORS_CONFIG_ALL_SPONSORS">
+
+		<!-- [Fields 1299] Base_height Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="base_height"
+			label="COM_MANAGEDSPONSORS_CONFIG_BASE_HEIGHT_LABEL"
+			size="5"
+			maxlength="50"
+			description="COM_MANAGEDSPONSORS_CONFIG_BASE_HEIGHT_DESCRIPTION"
+			class="text_area"
+			readonly="false"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			message="COM_MANAGEDSPONSORS_CONFIG_BASE_HEIGHT_MESSAGE"
+			hint="COM_MANAGEDSPONSORS_CONFIG_BASE_HEIGHT_HINT"
+			autocomplete="on"
+		/>
+	</fieldset>
+	<fieldset
 		name="permissions"
 		label="JCONFIG_PERMISSIONS_LABEL"
 		description="JCONFIG_PERMISSIONS_DESC">

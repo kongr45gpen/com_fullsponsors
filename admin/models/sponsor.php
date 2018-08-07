@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		sponsor.php
@@ -112,7 +112,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
-		// Get the form.
+		// [Interpretation 10777] Get the form.
 		$form = $this->loadForm('com_managedsponsors.sponsor', 'sponsor', array('control' => 'jform', 'load_data' => $loadData));
 
 		if (empty($form))
@@ -122,12 +122,12 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 
 		$jinput = JFactory::getApplication()->input;
 
-		// The front end calls this model and uses a_id to avoid id clashes so we need to check for that first.
+		// [Interpretation 10868] The front end calls this model and uses a_id to avoid id clashes so we need to check for that first.
 		if ($jinput->get('a_id'))
 		{
 			$id = $jinput->get('a_id', 0, 'INT');
 		}
-		// The back end uses id so we use that the rest of the time and set it to 0 by default.
+		// [Interpretation 10873] The back end uses id so we use that the rest of the time and set it to 0 by default.
 		else
 		{
 			$id = $jinput->get('id', 0, 'INT');
@@ -135,54 +135,54 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 
 		$user = JFactory::getUser();
 
-		// Check for existing item.
-		// Modify the form based on Edit State access controls.
+		// [Interpretation 10879] Check for existing item.
+		// [Interpretation 10880] Modify the form based on Edit State access controls.
 		if ($id != 0 && (!$user->authorise('sponsor.edit.state', 'com_managedsponsors.sponsor.' . (int) $id))
 			|| ($id == 0 && !$user->authorise('sponsor.edit.state', 'com_managedsponsors')))
 		{
-			// Disable fields for display.
+			// [Interpretation 10893] Disable fields for display.
 			$form->setFieldAttribute('ordering', 'disabled', 'true');
 			$form->setFieldAttribute('published', 'disabled', 'true');
-			// Disable fields while saving.
+			// [Interpretation 10896] Disable fields while saving.
 			$form->setFieldAttribute('ordering', 'filter', 'unset');
 			$form->setFieldAttribute('published', 'filter', 'unset');
 		}
-		// If this is a new item insure the greated by is set.
+		// [Interpretation 10901] If this is a new item insure the greated by is set.
 		if (0 == $id)
 		{
-			// Set the created_by to this user
+			// [Interpretation 10904] Set the created_by to this user
 			$form->setValue('created_by', null, $user->id);
 		}
-		// Modify the form based on Edit Creaded By access controls.
+		// [Interpretation 10907] Modify the form based on Edit Creaded By access controls.
 		if ($id != 0 && (!$user->authorise('sponsor.edit.created_by', 'com_managedsponsors.sponsor.' . (int) $id))
 			|| ($id == 0 && !$user->authorise('sponsor.edit.created_by', 'com_managedsponsors')))
 		{
-			// Disable fields for display.
+			// [Interpretation 10919] Disable fields for display.
 			$form->setFieldAttribute('created_by', 'disabled', 'true');
-			// Disable fields for display.
+			// [Interpretation 10921] Disable fields for display.
 			$form->setFieldAttribute('created_by', 'readonly', 'true');
-			// Disable fields while saving.
+			// [Interpretation 10923] Disable fields while saving.
 			$form->setFieldAttribute('created_by', 'filter', 'unset');
 		}
-		// Modify the form based on Edit Creaded Date access controls.
+		// [Interpretation 10926] Modify the form based on Edit Creaded Date access controls.
 		if ($id != 0 && (!$user->authorise('sponsor.edit.created', 'com_managedsponsors.sponsor.' . (int) $id))
 			|| ($id == 0 && !$user->authorise('sponsor.edit.created', 'com_managedsponsors')))
 		{
-			// Disable fields for display.
+			// [Interpretation 10938] Disable fields for display.
 			$form->setFieldAttribute('created', 'disabled', 'true');
-			// Disable fields while saving.
+			// [Interpretation 10940] Disable fields while saving.
 			$form->setFieldAttribute('created', 'filter', 'unset');
 		}
-		// Only load these values if no id is found
+		// [Interpretation 10970] Only load these values if no id is found
 		if (0 == $id)
 		{
-			// Set redirected field name
+			// [Interpretation 10973] Set redirected field name
 			$redirectedField = $jinput->get('ref', null, 'STRING');
-			// Set redirected field value
+			// [Interpretation 10975] Set redirected field value
 			$redirectedValue = $jinput->get('refid', 0, 'INT');
 			if (0 != $redirectedValue && $redirectedField)
 			{
-				// Now set the local-redirected field default value
+				// [Interpretation 10979] Now set the local-redirected field default value
 				$form->setValue($redirectedField, null, $redirectedValue);
 			}
 		}
@@ -218,7 +218,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 			}
 
 			$user = JFactory::getUser();
-			// The record has been set. Check the record permissions.
+			// [Interpretation 11153] The record has been set. Check the record permissions.
 			return $user->authorise('sponsor.delete', 'com_managedsponsors.sponsor.' . (int) $record->id);
 		}
 		return false;
@@ -240,14 +240,14 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 
 		if ($recordId)
 		{
-			// The record has been set. Check the record permissions.
+			// [Interpretation 11241] The record has been set. Check the record permissions.
 			$permission = $user->authorise('sponsor.edit.state', 'com_managedsponsors.sponsor.' . (int) $recordId);
 			if (!$permission && !is_null($permission))
 			{
 				return false;
 			}
 		}
-		// In the absense of better information, revert to the component permissions.
+		// [Interpretation 11258] In the absense of better information, revert to the component permissions.
 		return $user->authorise('sponsor.edit.state', 'com_managedsponsors');
 	}
     
@@ -262,7 +262,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 	 */
 	protected function allowEdit($data = array(), $key = 'id')
 	{
-		// Check specific edit permission then general edit permission.
+		// [Interpretation 11064] Check specific edit permission then general edit permission.
 		$user = JFactory::getUser();
 
 		return $user->authorise('sponsor.edit', 'com_managedsponsors.sponsor.'. ((int) isset($data[$key]) ? $data[$key] : 0)) or $user->authorise('sponsor.edit',  'com_managedsponsors');
@@ -508,7 +508,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 	{
 		if (empty($this->batchSet))
 		{
-			// Set some needed variables.
+			// [Interpretation 5429] Set some needed variables.
 			$this->user 		= JFactory::getUser();
 			$this->table 		= $this->getTable();
 			$this->tableClassName	= get_class($this->table);
@@ -520,12 +520,12 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 			return false;
 		}
 
-		// get list of uniqe fields
+		// [Interpretation 5447] get list of uniqe fields
 		$uniqeFields = $this->getUniqeFields();
-		// remove move_copy from array
+		// [Interpretation 5449] remove move_copy from array
 		unset($values['move_copy']);
 
-		// make sure published is set
+		// [Interpretation 5452] make sure published is set
 		if (!isset($values['published']))
 		{
 			$values['published'] = 0;
@@ -541,7 +541,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 		}
 		elseif (isset($values['category']) && (int) $values['category'] > 0)
 		{
-			// move the category value to correct field name
+			// [Interpretation 5477] move the category value to correct field name
 			$values['catid'] = $values['category'];
 			unset($values['category']);
 		}
@@ -551,40 +551,40 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 		}
 
 		$newIds = array();
-		// Parent exists so let's proceed
+		// [Interpretation 5489] Parent exists so let's proceed
 		while (!empty($pks))
 		{
-			// Pop the first ID off the stack
+			// [Interpretation 5492] Pop the first ID off the stack
 			$pk = array_shift($pks);
 
 			$this->table->reset();
 
-			// only allow copy if user may edit this item.
+			// [Interpretation 5497] only allow copy if user may edit this item.
 			if (!$this->user->authorise('sponsor.edit', $contexts[$pk]))
 			{
-				// Not fatal error
+				// [Interpretation 5507] Not fatal error
 				$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', $pk));
 				continue;
 			}
 
-			// Check that the row actually exists
+			// [Interpretation 5512] Check that the row actually exists
 			if (!$this->table->load($pk))
 			{
 				if ($error = $this->table->getError())
 				{
-					// Fatal error
+					// [Interpretation 5517] Fatal error
 					$this->setError($error);
 					return false;
 				}
 				else
 				{
-					// Not fatal error
+					// [Interpretation 5524] Not fatal error
 					$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', $pk));
 					continue;
 				}
 			}
 
-			// insert all set values
+			// [Interpretation 5568] insert all set values
 			if (ManagedsponsorsHelper::checkArray($values))
 			{
 				foreach ($values as $key => $value)
@@ -596,7 +596,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 				}
 			}
 
-			// update all uniqe fields
+			// [Interpretation 5580] update all uniqe fields
 			if (ManagedsponsorsHelper::checkArray($uniqeFields))
 			{
 				foreach ($uniqeFields as $uniqeField)
@@ -605,13 +605,13 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 				}
 			}
 
-			// Reset the ID because we are making a copy
+			// [Interpretation 5589] Reset the ID because we are making a copy
 			$this->table->id = 0;
 
-			// TODO: Deal with ordering?
-			// $this->table->ordering = 1;
+			// [Interpretation 5592] TODO: Deal with ordering?
+			// [Interpretation 5593] $this->table->ordering = 1;
 
-			// Check the row.
+			// [Interpretation 5595] Check the row.
 			if (!$this->table->check())
 			{
 				$this->setError($this->table->getError());
@@ -624,7 +624,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 				$this->createTagsHelper($this->tagsObserver, $this->type, $pk, $this->typeAlias, $this->table);
 			}
 
-			// Store the row.
+			// [Interpretation 5608] Store the row.
 			if (!$this->table->store())
 			{
 				$this->setError($this->table->getError());
@@ -632,14 +632,14 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 				return false;
 			}
 
-			// Get the new item ID
+			// [Interpretation 5616] Get the new item ID
 			$newId = $this->table->get('id');
 
-			// Add the new ID to the array
+			// [Interpretation 5619] Add the new ID to the array
 			$newIds[$pk] = $newId;
 		}
 
-		// Clean the cache
+		// [Interpretation 5623] Clean the cache
 		$this->cleanCache();
 
 		return $newIds;
@@ -660,7 +660,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 	{
 		if (empty($this->batchSet))
 		{
-			// Set some needed variables.
+			// [Interpretation 5222] Set some needed variables.
 			$this->user		= JFactory::getUser();
 			$this->table		= $this->getTable();
 			$this->tableClassName	= get_class($this->table);
@@ -673,12 +673,12 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 			return false;
 		}
 
-		// make sure published only updates if user has the permission.
+		// [Interpretation 5242] make sure published only updates if user has the permission.
 		if (isset($values['published']) && !$this->canDo->get('sponsor.edit.state'))
 		{
 			unset($values['published']);
 		}
-		// remove move_copy from array
+		// [Interpretation 5255] remove move_copy from array
 		unset($values['move_copy']);
 
 		if (isset($values['category']) && (int) $values['category'] > 0 && !static::checkCategoryId($values['category']))
@@ -687,7 +687,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 		}
 		elseif (isset($values['category']) && (int) $values['category'] > 0)
 		{
-			// move the category value to correct field name
+			// [Interpretation 5266] move the category value to correct field name
 			$values['catid'] = $values['category'];
 			unset($values['category']);
 		}
@@ -697,7 +697,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 		}
 
 
-		// Parent exists so we proceed
+		// [Interpretation 5276] Parent exists so we proceed
 		foreach ($pks as $pk)
 		{
 			if (!$this->user->authorise('sponsor.edit', $contexts[$pk]))
@@ -706,29 +706,29 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 				return false;
 			}
 
-			// Check that the row actually exists
+			// [Interpretation 5293] Check that the row actually exists
 			if (!$this->table->load($pk))
 			{
 				if ($error = $this->table->getError())
 				{
-					// Fatal error
+					// [Interpretation 5298] Fatal error
 					$this->setError($error);
 					return false;
 				}
 				else
 				{
-					// Not fatal error
+					// [Interpretation 5305] Not fatal error
 					$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', $pk));
 					continue;
 				}
 			}
 
-			// insert all set values.
+			// [Interpretation 5311] insert all set values.
 			if (ManagedsponsorsHelper::checkArray($values))
 			{
 				foreach ($values as $key => $value)
 				{
-					// Do special action for access.
+					// [Interpretation 5316] Do special action for access.
 					if ('access' === $key && strlen($value) > 0)
 					{
 						$this->table->$key = $value;
@@ -741,7 +741,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 			}
 
 
-			// Check the row.
+			// [Interpretation 5328] Check the row.
 			if (!$this->table->check())
 			{
 				$this->setError($this->table->getError());
@@ -754,7 +754,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 				$this->createTagsHelper($this->tagsObserver, $this->type, $pk, $this->typeAlias, $this->table);
 			}
 
-			// Store the row.
+			// [Interpretation 5341] Store the row.
 			if (!$this->table->store())
 			{
 				$this->setError($this->table->getError());
@@ -763,7 +763,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 			}
 		}
 
-		// Clean the cache
+		// [Interpretation 5350] Clean the cache
 		$this->cleanCache();
 
 		return true;
@@ -801,10 +801,10 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 			$data['params'] = (string) $params;
 		}
 
-		// Alter the uniqe field for save as copy
+		// [Interpretation 5745] Alter the uniqe field for save as copy
 		if ($input->get('task') === 'save2copy')
 		{
-			// Automatic handling of other uniqe fields
+			// [Interpretation 5748] Automatic handling of other uniqe fields
 			$uniqeFields = $this->getUniqeFields();
 			if (ManagedsponsorsHelper::checkArray($uniqeFields))
 			{
@@ -857,7 +857,7 @@ class ManagedsponsorsModelSponsor extends JModelAdmin
 	protected function _generateNewTitle($title)
 	{
 
-		// Alter the title
+		// [Interpretation 5831] Alter the title
 		$table = $this->getTable();
 
 		while ($table->load(array('title' => $title)))

@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		default_body.php
@@ -86,6 +86,9 @@ $edit = "index.php?option=com_managedsponsors&view=sponsors&task=sponsor.edit";
 		</td>
 		<td class="hidden-phone">
 			<?php echo $this->escape($item->website); ?>
+		</td>
+		<td class="hidden-phone">
+			<?php echo $this->escape($item->size); ?>
 		</td>
 		<td class="center">
 		<?php if ($canDo->get('sponsor.edit.state')) : ?>

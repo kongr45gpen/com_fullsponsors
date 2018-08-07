@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		default_foot.php
@@ -23,5 +23,5 @@ defined('_JEXEC') or die('Restricted access');
 
 ?>
 <tr>
-	<td colspan="7"><?php echo $this->pagination->getListFooter(); ?></td>
+	<td colspan="8"><?php echo $this->pagination->getListFooter(); ?></td>
 </tr>

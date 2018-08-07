@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<metadata>
+	<layout title="COM_MANAGEDSPONSORS_MENU_ALL_SPONSORS_TITLE" option="COM_MANAGEDSPONSORS_MENU_ALL_SPONSORS_OPTION">
+		<message>
+			<![CDATA[COM_MANAGEDSPONSORS_MENU_ALL_SPONSORS_DESC]]>
+		</message>
+	</layout>
+	<!-- [Interpretation 1516] Adding page parameters -->
+	<fields name="params">
+		<fieldset name="basic" label="COM_MANAGEDSPONSORS"
+			addrulepath="/administrator/components/com_managedsponsors/models/rules"
+			addfieldpath="/administrator/components/com_managedsponsors/models/fields">
+		<!-- [Fields 1299] Base_height Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="base_height"
+			label="COM_MANAGEDSPONSORS_CONFIG_BASE_HEIGHT_LABEL"
+			size="5"
+			maxlength="50"
+			description="COM_MANAGEDSPONSORS_CONFIG_BASE_HEIGHT_DESCRIPTION"
+			class="text_area"
+			readonly="false"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			message="COM_MANAGEDSPONSORS_CONFIG_BASE_HEIGHT_MESSAGE"
+			hint="COM_MANAGEDSPONSORS_CONFIG_BASE_HEIGHT_HINT"
+			autocomplete="on"
+		/>
+		</fieldset>
+	</fields>
+</metadata>

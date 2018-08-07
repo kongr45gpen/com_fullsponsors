@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		router.php
@@ -77,11 +77,11 @@ class ManagedsponsorsRouter extends JComponentRouterBase
 			return $segments;
 		}
 
-		if (isset($view) && isset($query['id']) && ($view === 'sponsor' || $view === 'allsponsors'))
+		if (isset($view) && isset($query['id']) && ($view === 'sponsor' || $view === 'all_sponsors'))
 		{
 			if ($mId != (int) $query['id'] || $mView != $view)
 			{
-				if (($view === 'sponsor' || $view === 'allsponsors'))
+				if (($view === 'sponsor' || $view === 'all_sponsors'))
 				{
 					$segments[] = $view;
 					$id = explode(':', $query['id']);
@@ -133,8 +133,8 @@ class ManagedsponsorsRouter extends JComponentRouterBase
 					$vars['id'] = (int) $segments[$count-1];
 				}
 				break;
-			case 'allsponsors':
-				$vars['view'] = 'allsponsors';
+			case 'all_sponsors':
+				$vars['view'] = 'all_sponsors';
 				if (is_numeric($segments[$count-1]))
 				{
 					$vars['id'] = (int) $segments[$count-1];

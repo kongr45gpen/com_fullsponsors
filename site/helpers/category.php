@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		category.php
@@ -25,7 +25,7 @@ defined('_JEXEC') or die('Restricted access');
  * Managedsponsors Component Category Tree
  */
 
-//Insure this view category file is loaded.
+// [Interpretation 10439]Insure this view category file is loaded.
 $classname = 'managedsponsorsSponsorsCategories';
 if (!class_exists($classname))
 {

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fieldset name="basic" label="Group settings">
+<!--            <field name="group_id" type="list" default="" label="Select group:">
+                <option value=""></option>
+                <option value="1">Group 1</option>
+                <option value="2">Group 2</option>
+                <option value="3">Group 3</option>
+            </field> -->
+            <field name="sponsor_category_size" type="text" default="" hint="100" label="Size (%)" description="The size percentage of the sponsor images belonging to this category">
+            </field>
+		
+		<field
+                name="sponsor_category_display_type"
+                type="radio"
+                label="Display Type"
+                description="How the images should be displayed as a list"
+                class="btn-group"
+		        default="1"
+                >
+                <option value="1">Full Grid</option>
+                <option value="2">Scrolling</option>
+            </field>
+
+        <field
+                name="sponsor_category_randomize"
+                type="radio"
+                label="Randomise"
+                description="Enable if you want sponsors to be shown in a random order, different to
+                the one specified in the administrative sponsor"
+                class="btn-group btn-yesno"
+		        default="0"
+                >
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>

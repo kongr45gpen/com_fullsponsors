@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		view.html.php
@@ -86,27 +86,27 @@ class ManagedsponsorsViewSponsor extends JViewLegacy
 		$isNew = $this->item->id == 0;
 
 		JToolbarHelper::title( JText::_($isNew ? 'COM_MANAGEDSPONSORS_SPONSOR_NEW' : 'COM_MANAGEDSPONSORS_SPONSOR_EDIT'), 'pencil-2 article-add');
-		// Built the actions for new and existing records.
+		// [Interpretation 11558] Built the actions for new and existing records.
 		if ($this->refid || $this->ref)
 		{
 			if ($this->canDo->get('sponsor.create') && $isNew)
 			{
-				// We can create the record.
+				// [Interpretation 11570] We can create the record.
 				JToolBarHelper::save('sponsor.save', 'JTOOLBAR_SAVE');
 			}
 			elseif ($this->canDo->get('sponsor.edit'))
 			{
-				// We can save the record.
+				// [Interpretation 11582] We can save the record.
 				JToolBarHelper::save('sponsor.save', 'JTOOLBAR_SAVE');
 			}
 			if ($isNew)
 			{
-				// Do not creat but cancel.
+				// [Interpretation 11587] Do not creat but cancel.
 				JToolBarHelper::cancel('sponsor.cancel', 'JTOOLBAR_CANCEL');
 			}
 			else
 			{
-				// We can close it.
+				// [Interpretation 11592] We can close it.
 				JToolBarHelper::cancel('sponsor.cancel', 'JTOOLBAR_CLOSE');
 			}
 		}
@@ -114,7 +114,7 @@ class ManagedsponsorsViewSponsor extends JViewLegacy
 		{
 			if ($isNew)
 			{
-				// For new records, check the create permission.
+				// [Interpretation 11600] For new records, check the create permission.
 				if ($this->canDo->get('sponsor.create'))
 				{
 					JToolBarHelper::apply('sponsor.apply', 'JTOOLBAR_APPLY');
@@ -127,11 +127,11 @@ class ManagedsponsorsViewSponsor extends JViewLegacy
 			{
 				if ($this->canDo->get('sponsor.edit'))
 				{
-					// We can save the new record
+					// [Interpretation 11627] We can save the new record
 					JToolBarHelper::apply('sponsor.apply', 'JTOOLBAR_APPLY');
 					JToolBarHelper::save('sponsor.save', 'JTOOLBAR_SAVE');
-					// We can save this record, but check the create permission to see
-					// if we can return to make a new one.
+					// [Interpretation 11630] We can save this record, but check the create permission to see
+					// [Interpretation 11631] if we can return to make a new one.
 					if ($this->canDo->get('sponsor.create'))
 					{
 						JToolBarHelper::custom('sponsor.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);
@@ -145,7 +145,7 @@ class ManagedsponsorsViewSponsor extends JViewLegacy
 			}
 		}
 		JToolbarHelper::divider();
-		// set help url for this view if found
+		// [Interpretation 11683] set help url for this view if found
 		$help_url = ManagedsponsorsHelper::getHelpUrl('sponsor');
 		if (ManagedsponsorsHelper::checkString($help_url))
 		{

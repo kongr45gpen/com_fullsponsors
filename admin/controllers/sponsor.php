@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		sponsor.php
@@ -55,13 +55,13 @@ class ManagedsponsorsControllerSponsor extends JControllerForm
 	 */
 	protected function allowAdd($data = array())
 	{
-		// Access check.
+		// [Interpretation 10536] Access check.
 		$access = JFactory::getUser()->authorise('sponsor.access', 'com_managedsponsors');
 		if (!$access)
 		{
 			return false;
 		}
-		// In the absense of better information, revert to the component permissions.
+		// [Interpretation 10547] In the absense of better information, revert to the component permissions.
 		return JFactory::getUser()->authorise('sponsor.create', $this->option);
 	}
 
@@ -76,13 +76,13 @@ class ManagedsponsorsControllerSponsor extends JControllerForm
 	 * @since   1.6
 	 */
 	protected function allowEdit($data = array(), $key = 'id')
-	{		// get user object.
+	{		// [Interpretation 10588] get user object.
 		$user = JFactory::getUser();
-		// get record id.
+		// [Interpretation 10590] get record id.
 		$recordId = (int) isset($data[$key]) ? $data[$key] : 0;
 
 
-		// Access check.
+		// [Interpretation 10597] Access check.
 		$access = ($user->authorise('sponsor.access', 'com_managedsponsors.sponsor.' . (int) $recordId) && $user->authorise('sponsor.access', 'com_managedsponsors'));
 		if (!$access)
 		{
@@ -91,17 +91,17 @@ class ManagedsponsorsControllerSponsor extends JControllerForm
 
 		if ($recordId)
 		{
-			// The record has been set. Check the record permissions.
+			// [Interpretation 10606] The record has been set. Check the record permissions.
 			$permission = $user->authorise('sponsor.edit', 'com_managedsponsors.sponsor.' . (int) $recordId);
 			if (!$permission)
 			{
 				if ($user->authorise('sponsor.edit.own', 'com_managedsponsors.sponsor.' . $recordId))
 				{
-					// Fallback on edit.own. Now test the owner is the user.
+					// [Interpretation 10628] Fallback on edit.own. Now test the owner is the user.
 					$ownerId = (int) isset($data['created_by']) ? $data['created_by'] : 0;
 					if (empty($ownerId))
 					{
-						// Need to do a lookup from the model.
+						// [Interpretation 10632] Need to do a lookup from the model.
 						$record = $this->getModel()->getItem($recordId);
 
 						if (empty($record))
@@ -111,7 +111,7 @@ class ManagedsponsorsControllerSponsor extends JControllerForm
 						$ownerId = $record->created_by;
 					}
 
-					// If the owner matches 'me' then do the test.
+					// [Interpretation 10640] If the owner matches 'me' then do the test.
 					if ($ownerId == $user->id)
 					{
 						if ($user->authorise('sponsor.edit.own', 'com_managedsponsors'))
@@ -123,7 +123,7 @@ class ManagedsponsorsControllerSponsor extends JControllerForm
 				return false;
 			}
 		}
-		// Since there is no permission, revert to the component permissions.
+		// [Interpretation 10672] Since there is no permission, revert to the component permissions.
 		return $user->authorise('sponsor.edit', $this->option);
 	}
 

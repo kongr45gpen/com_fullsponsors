@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		sponsors.php
@@ -111,7 +111,7 @@ class ManagedsponsorsModelSponsors extends JModelList
 		// load parent items
 		$items = parent::getItems();
 
-		// set values to display correctly.
+		// [Interpretation 12177] set values to display correctly.
 		if (ManagedsponsorsHelper::checkArray($items))
 		{
 			foreach ($items as $nr => &$item)
@@ -137,21 +137,21 @@ class ManagedsponsorsModelSponsors extends JModelList
 	 */
 	protected function getListQuery()
 	{
-		// Get the user object.
+		// [Interpretation 8766] Get the user object.
 		$user = JFactory::getUser();
-		// Create a new query object.
+		// [Interpretation 8768] Create a new query object.
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 
-		// Select some fields
+		// [Interpretation 8771] Select some fields
 		$query->select('a.*');
 		$query->select($db->quoteName('c.title','category_title'));
 
-		// From the managedsponsors_item table
+		// [Interpretation 8778] From the managedsponsors_item table
 		$query->from($db->quoteName('#__managedsponsors_sponsor', 'a'));
 		$query->join('LEFT', $db->quoteName('#__categories', 'c') . ' ON (' . $db->quoteName('a.catid') . ' = ' . $db->quoteName('c.id') . ')');
 
-		// Filter by published state
+		// [Interpretation 8789] Filter by published state
 		$published = $this->getState('filter.published');
 		if (is_numeric($published))
 		{
@@ -162,21 +162,21 @@ class ManagedsponsorsModelSponsors extends JModelList
 			$query->where('(a.published = 0 OR a.published = 1)');
 		}
 
-		// Join over the asset groups.
+		// [Interpretation 8801] Join over the asset groups.
 		$query->select('ag.title AS access_level');
 		$query->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access');
-		// Filter by access level.
+		// [Interpretation 8804] Filter by access level.
 		if ($access = $this->getState('filter.access'))
 		{
 			$query->where('a.access = ' . (int) $access);
 		}
-		// Implement View Level Access
+		// [Interpretation 8809] Implement View Level Access
 		if (!$user->authorise('core.options', 'com_managedsponsors'))
 		{
 			$groups = implode(',', $user->getAuthorisedViewLevels());
 			$query->where('a.access IN (' . $groups . ')');
 		}
-		// Filter by search.
+		// [Interpretation 8886] Filter by search.
 		$search = $this->getState('filter.search');
 		if (!empty($search))
 		{
@@ -192,7 +192,7 @@ class ManagedsponsorsModelSponsors extends JModelList
 		}
 
 
-		// Filter by a single or group of categories.
+		// [Interpretation 8823] Filter by a single or group of categories.
 		$baselevel = 1;
 		$categoryId = $this->getState('filter.category_id');
 
@@ -214,7 +214,7 @@ class ManagedsponsorsModelSponsors extends JModelList
 		}
 
 
-		// Add the list ordering clause.
+		// [Interpretation 8845] Add the list ordering clause.
 		$orderCol = $this->state->get('list.ordering', 'a.id');
 		$orderDirn = $this->state->get('list.direction', 'asc');	
 		if ($orderCol != '')
@@ -233,7 +233,7 @@ class ManagedsponsorsModelSponsors extends JModelList
 	 */
 	protected function getStoreId($id = '')
 	{
-		// Compile the store id.
+		// [Interpretation 11448] Compile the store id.
 		$id .= ':' . $this->getState('filter.id');
 		$id .= ':' . $this->getState('filter.search');
 		$id .= ':' . $this->getState('filter.published');

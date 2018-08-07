@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		route.php
@@ -33,29 +33,29 @@ abstract class ManagedsponsorsHelperRoute
 	protected static $lookup;
 
 	/**
-	 * @param int The route of the Allsponsors
+	 * @param int The route of the All_sponsors
 	 */
-	public static function getAllsponsorsRoute($id = 0, $catid = 0)
+	public static function getAll_sponsorsRoute($id = 0, $catid = 0)
 	{
 		if ($id > 0)
 		{
-			// Initialize the needel array.
+			// [Interpretation 5036] Initialize the needel array.
 			$needles = array(
-				'allsponsors'  => array((int) $id)
+				'all_sponsors'  => array((int) $id)
 			);
-			// Create the link
-			$link = 'index.php?option=com_managedsponsors&view=allsponsors&id='. $id;
+			// [Interpretation 5040] Create the link
+			$link = 'index.php?option=com_managedsponsors&view=all_sponsors&id='. $id;
 		}
 		else
 		{
-			// Initialize the needel array.
+			// [Interpretation 5045] Initialize the needel array.
 			$needles = array();
-			//Create the link but don't add the id.
-			$link = 'index.php?option=com_managedsponsors&view=allsponsors';
+			// [Interpretation 5047]Create the link but don't add the id.
+			$link = 'index.php?option=com_managedsponsors&view=all_sponsors';
 		}
 		if ($catid > 1)
 		{
-			$categories = JCategories::getInstance('managedsponsors.allsponsors');
+			$categories = JCategories::getInstance('managedsponsors.all_sponsors');
 			$category = $categories->get($catid);
 			if ($category)
 			{

@@ -7,7 +7,7 @@
 	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
-	@subpackage		default_batch_body.php
+	@subpackage		details_above.php
 	@author			kongr45gpen <http://helit.org/>	
 	@copyright		Copyright (C) 2018. All Rights Reserved
 	@license		GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
@@ -19,9 +19,19 @@
 /------------------------------------------------------------------------------------------------------*/
 
 // No direct access to this file
-defined('_JEXEC') or die('Restricted access'); 
+
+defined('_JEXEC') or die('Restricted access');
+
+$form = $displayData->getForm();
+
+$fields = array(
+	'name',
+	'catid'
+);
 
 ?>
-
-<p><?php echo JText::_('COM_MANAGEDSPONSORS_SPONSORS_BATCH_TIP'); ?></p>
-<?php echo $this->batchDisplay; ?>
+<div class="form-inline form-inline-header">
+	<?php foreach($fields as $field){
+		echo $form->renderField($field);
+	} ?>
+</div>

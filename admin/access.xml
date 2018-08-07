@@ -13,7 +13,6 @@
 		<action name="core.edit.own" title="JACTION_EDITOWN" description="JACTION_EDITOWN_COMPONENT_DESC" />
 		<action name="core.edit.created_by" title="COM_MANAGEDSPONSORS_EDIT_CREATED_BY" description="COM_MANAGEDSPONSORS_EDIT_CREATED_BY_DESC" />
 		<action name="core.edit.created" title="COM_MANAGEDSPONSORS_EDIT_CREATED_DATE" description="COM_MANAGEDSPONSORS_EDIT_CREATED_DATE_DESC" />
-		<action name="site.allsponsors.access" title="COM_MANAGEDSPONSORS_ALL_SPONSORS_ACCESS_SITE" description="COM_MANAGEDSPONSORS_ALL_SPONSORS_ACCESS_SITE_DESC" />
 		<action name="sponsor.access" title="COM_MANAGEDSPONSORS_SPONSORS_ACCESS" description="COM_MANAGEDSPONSORS_SPONSORS_ACCESS_DESC" />
 		<action name="sponsor.batch" title="COM_MANAGEDSPONSORS_SPONSORS_BATCH_USE" description="COM_MANAGEDSPONSORS_SPONSORS_BATCH_USE_DESC" />
 		<action name="sponsor.create" title="COM_MANAGEDSPONSORS_SPONSORS_CREATE" description="COM_MANAGEDSPONSORS_SPONSORS_CREATE_DESC" />

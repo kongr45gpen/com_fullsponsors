@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		view.html.php
@@ -186,7 +186,7 @@ class ManagedsponsorsViewSponsors extends JViewLegacy
 			);
 		}
 
-		// Category Filter.
+		// [Interpretation 10385] Category Filter.
 		JHtmlSidebar::addFilter(
 			JText::_('JOPTION_SELECT_CATEGORY'),
 			'filter_category_id',
@@ -195,7 +195,7 @@ class ManagedsponsorsViewSponsors extends JViewLegacy
 
 		if ($this->canBatch && $this->canCreate && $this->canEdit)
 		{
-			// Category Batch selection.
+			// [Interpretation 10395] Category Batch selection.
 			JHtmlBatch_::addListSelection(
 				JText::_('COM_MANAGEDSPONSORS_KEEP_ORIGINAL_CATEGORY'),
 				'batch[category]',

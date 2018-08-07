@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		edit.php
@@ -33,14 +33,18 @@ $componentParams = JComponentHelper::getParams('com_managedsponsors');
 <?php echo $this->toolbar->render(); ?>
 <form action="<?php echo JRoute::_('index.php?option=com_managedsponsors&layout=edit&id='.(int) $this->item->id.$this->referral); ?>" method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
 
+	<?php echo JLayoutHelper::render('sponsor.details_above', $this); ?>
 <div class="form-horizontal">
 
 	<?php echo JHtml::_('bootstrap.startTabSet', 'sponsorTab', array('active' => 'details')); ?>
 
 	<?php echo JHtml::_('bootstrap.addTab', 'sponsorTab', 'details', JText::_('COM_MANAGEDSPONSORS_SPONSOR_DETAILS', true)); ?>
 		<div class="row-fluid form-horizontal-desktop">
-			<div class="span12">
+			<div class="span6">
 				<?php echo JLayoutHelper::render('sponsor.details_left', $this); ?>
+			</div>
+			<div class="span6">
+				<?php echo JLayoutHelper::render('sponsor.details_right', $this); ?>
 			</div>
 		</div>
 	<?php echo JHtml::_('bootstrap.endTab'); ?>

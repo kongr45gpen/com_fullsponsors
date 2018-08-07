@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.3
-	@build			4th August, 2018
+	@version		0.0.4
+	@build			7th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		controller.php
@@ -41,7 +41,7 @@ class ManagedsponsorsController extends JControllerLegacy
 	function display($cachable = false, $urlparams = false)
 	{
 		// set default view if not set
-		$view		= $this->input->getCmd('view', 'allsponsors');
+		$view		= $this->input->getCmd('view', 'all_sponsors');
 		$this->input->set('view', $view);
 		$isEdit		= $this->checkEditView($view);
 		$layout		= $this->input->get('layout', null, 'WORD');
@@ -80,7 +80,7 @@ class ManagedsponsorsController extends JControllerLegacy
 				else
 				{
 					// normal redirect back to the list default site view
-					$this->setRedirect(JRoute::_('index.php?option=com_managedsponsors&view=allsponsors', false));
+					$this->setRedirect(JRoute::_('index.php?option=com_managedsponsors&view=all_sponsors', false));
 				}
 				return false;
 			}

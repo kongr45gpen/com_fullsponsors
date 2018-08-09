@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.4
-	@build			7th August, 2018
+	@version		0.0.5
+	@build			9th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		script.php
@@ -133,7 +133,7 @@ class com_managedsponsorsInstallerScript
 			echo '<a target="_blank" href="http://helit.org/" title="Managed Sponsors">
 				<img src="components/com_managedsponsors/assets/images/vdm-component.jpg"/>
 				</a>
-				<h3>Upgrade to Version 0.0.4 Was Successful! Let us know if anything is not working as expected.</h3>';
+				<h3>Upgrade to Version 0.0.5 Was Successful! Let us know if anything is not working as expected.</h3>';
 		}
 	}
 }

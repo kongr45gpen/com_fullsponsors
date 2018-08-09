@@ -3,8 +3,8 @@
 				Electroservices Team 
 /-------------------------------------------------------------------------------------------------------/
 
-	@version		0.0.4
-	@build			7th August, 2018
+	@version		0.0.5
+	@build			9th August, 2018
 	@created		3rd August, 2018
 	@package		Managed Sponsors
 	@subpackage		default.php
@@ -63,6 +63,45 @@ function apply_percentage($css_size, $percentage) {
     ?>
 
     <h2><?php echo $category[0]->categories_title ?></h2>
+
+    <?php if ($category_display_type == 2): // Slider ?>
+        <div class="managedsponsors_sponsors_slider slider">
+            <?php foreach($category as $item): ?>
+            <?php 
+                $has_site = $item->website && trim($item->website) != '';
+                $href = ($has_site) ? $item->website : '#';
+                $tag = ($has_site) ? 'a' : 'div';
+
+                $item_size_percentage = (trim($item->size) != '') ? $item->size : 100;
+                $item_margin = (trim($item->margin) != '') ? $item->margin : null;
+                $item_padding = (trim($item->padding) != '') ? $item->padding : null;
+
+                $item_height = apply_percentage(apply_percentage($BASE_HEIGHT, $category_size_percentage), $item_size_percentage);
+            ?>
+
+            <<?php echo $tag; ?> 
+                class="managedsponsors_sponsor_slide slide"
+                href="<?php echo $href ?>"
+                title="<?php echo $item->name; ?>"
+                style="<?php if ($item_margin !== null): ?>margin:<?php echo $item_margin; ?>;<?php endif; ?>"
+            >
+                <?php if (trim($item->image) != ''): ?>
+                <img 
+                    src="<?php echo $item->image ?>"
+                    alt="<?php echo $item->name; ?>"
+                    style="
+                        width: <?php echo $item_height; ?>;
+                        <?php if ($item_padding !== null): ?>padding:<?php echo $item_padding; ?>;<?php endif; ?>
+                    "
+                >
+                <?php else: ?>
+                <strong class="managedsponsors_textual"><?php echo $item->name; ?></strong>
+                <?php endif; ?>
+            </<?php echo $tag; ?>>
+
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
     <div class="managedsponsors_sponsors">
         <?php foreach($category as $item): ?>
             <?php 
@@ -106,6 +145,7 @@ function apply_percentage($css_size, $percentage) {
         <?php endforeach; ?>
         </div>
     </div>
+    <?php endif; ?>
 
 <?php endforeach; ?>
- 
+  
